@@ -1,1 +1,1 @@
-docker run -p 8000:8000 facenet-app
+docker run -d -p 8000:8000 --name facenet-app --restart unless-stopped facenet-app

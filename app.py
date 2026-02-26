@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.templating import Jinja2Templates
+from fastapi.responses import FileResponse
 from fastapi import Request
 import shutil
 import os
@@ -30,6 +31,9 @@ def compare_faces(img1_path, img2_path):
         "similarity": round(similarity, 2)
     }
 
+@app.get("/favicon.ico")
+async def favicon():
+    return FileResponse("favicon.ico")
 
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request):
